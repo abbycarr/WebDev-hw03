@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { uniq, match, test_guess, make_secret_numb } from './game';
 import './App.css';
 
-
+// The format of a seprate screen and the passing of the reset function in through 
+// the GameLost and GameWon functions were formats taken from class
 function GameLost(r) {
   let { reset } = r;
   return (
@@ -35,6 +36,7 @@ function GameWon(r) {
 
 function App() {
 
+  // the text useState item is from lecture
   const [text, setText] = useState("");
   const [guesses, setGuesses] = useState([]);
   const [results, setResults] = useState([]);
@@ -42,6 +44,7 @@ function App() {
 
   let turns = 8 - guesses.length;
 
+  // the following 3 lines of code are from lecture
   function updateText(ev) {
     let vv = ev.target.value;
     let cc = vv[vv.length - 1];
@@ -50,6 +53,7 @@ function App() {
     }
   }
 
+  // the following 4 lines of code are from lecture
   function guess() {
     if (test_guess(text)) {
       let ng = uniq(guesses.concat(text));
@@ -60,6 +64,7 @@ function App() {
     }
   }
 
+  // this function was also in lecture code
   function keyPress(ev) {
     if (ev.key === "Enter") {
       guess();
@@ -80,7 +85,7 @@ function App() {
   if (results[results.length - 1] == "4B0C") {
     return <GameWon reset={(newGame)} />;
   }
-
+  // the input box below is from lecture 
   return (
     <div className="App">
       <h1>Bulls and Cows</h1>

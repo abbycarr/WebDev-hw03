@@ -1,3 +1,4 @@
+// this function is from lecture
 export function uniq(xs) {
   return Array.from(new Set(xs));
 }
